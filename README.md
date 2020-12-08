@@ -24,10 +24,10 @@ Models directory: contains the script train_classifier.py containing ML pipeline
 App directory: contains the script run.py used to run the flask web-app which visualize the data and deploy the classifier so
 it can be used.
 
-## SUmmary and Details
+## Summary and Details
 The purpose of the project is to classify disaster messages. A user can input a message into the web-app, which highlights
-the categories to which the messsage corresponds. The app runs an ML model in order to classify new messages.
-This model was trained on data provided by Udacity and manipulated by an ETL pipeline.
+the categories to which the message corresponds. The app runs an ML model, deployed into the web-app in order to classify new messages.
+This model was trained on data provided by Udacity and manipulated by an ETL pipeline and it implements NLP.
 
 ## Acknowledgements
 Udacity provided the course material (both data and the skeleton of the web app)
