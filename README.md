@@ -29,7 +29,7 @@ The app runs an ML model, which was trained on data provided by Udacity and mani
 The model is a classifier which tells, based on the input message, the related category of the message.
 
 ## Acknowledgements
-Udacity provided the course material (both data and the skeleton of the webb app)
+Udacity provided the course material (both data and the skeleton of the web app)
 
 
 
