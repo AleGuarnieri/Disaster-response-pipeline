@@ -29,6 +29,9 @@ deployed into the web-app
 """
 
 def load_data(database_filepath):
+    """
+    loads data from the Database into arrays of X (feature) and y (labels)
+    """
     #connecting to Database and load data
     engine = create_engine('sqlite:///' + str(database_filepath))
     df = pd.read_sql_table('DisasterResponseTable', engine)  
@@ -40,6 +43,11 @@ def load_data(database_filepath):
     return X, y, y_labels
 
 def tokenize(text):
+    """
+    tokenize the features using NLP. First possible urls and punctuation are replaced,
+    then words are tokenized so that stop words can be removed and then lemmatized.
+    Cleaned token words are returned
+    """
     #remove url
     detected_urls = re.findall(url_regex, text)
     for url in detected_urls:
@@ -63,6 +71,10 @@ def tokenize(text):
 
 
 def build_model():
+    """
+    Classifier is build using pipeline. GridSearch is used to fine tune the paramenter.
+    Only two were fine tuned but more can be used. The function return the model to be trained
+    """
     #using Pipeline to build classifier
     pipeline = Pipeline([
         ('vect', CountVectorizer(tokenizer=tokenize)),
@@ -85,18 +97,26 @@ def build_model():
 
 
 def evaluate_model(model, X_test, Y_test, category_names):
-
+    """
+    Evaluates the trained model, printing precision, recall, f1_score and support
+    """
     y_pred = model.predict(X_test)
     for i, category in enumerate(category_names):
         print(category)
         print(classification_report(Y_test[:,i], y_pred[:,i]))
 
 def save_model(model, model_filepath):
+    """
+    Saves the model as a pickle file so that it can be used as a classifier in production
+    """
     with open(model_filepath, 'wb') as file:
         pickle.dump(model, file)
 
 
 def main():
+    """
+    main function to execute the previous functions and to handle possible errors
+    """
     if len(sys.argv) == 3:
         database_filepath, model_filepath = sys.argv[1:]
         print('Loading data...\n    DATABASE: {}'.format(database_filepath))
