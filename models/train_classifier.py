@@ -23,6 +23,10 @@ from sklearn.model_selection import GridSearchCV
 
 url_regex = 'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+'
 
+"""
+This script is used to train and evaluate the Classifier model which will be
+deployed into the web-app
+"""
 
 def load_data(database_filepath):
     #connecting to Database and load data
