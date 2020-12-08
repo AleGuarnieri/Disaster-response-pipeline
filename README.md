@@ -14,7 +14,7 @@
 3. Go to localhost:3001
 
 ## Motivation
-This is an interactive flask app built as part of a Data Science course to put into practice ETL and ML pipelines.
+This project was implemented as part of a Data Science course to put into practice ETL and ML pipelines.
 Implementing it allowed me to understand and practice Data engineering skills, the basics of NLP and their application
 to the implementation of an ML model through pipelines. 
 
@@ -24,9 +24,10 @@ Models directory: contains the script train_classifier.py containing ML pipeline
 App directory: contains the script run.py used to run the flask web-app which visualize the data and deploy the classifier so
 it can be used.
 
-## Details
-The app runs an ML model, which was trained on data provided by Udacity and manipulated by an ETL pipeline.
-The model is a classifier which tells, based on the input message, the related category of the message.
+## SUmmary and Details
+The purpose of the project is to classify disaster messages. A user can input a message into the web-app, which highlights
+the categories to which the messsage corresponds. The app runs an ML model in order to classify new messages.
+This model was trained on data provided by Udacity and manipulated by an ETL pipeline.
 
 ## Acknowledgements
 Udacity provided the course material (both data and the skeleton of the web app)
