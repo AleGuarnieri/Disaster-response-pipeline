@@ -2,6 +2,16 @@ import sys
 import pandas as pd
 from sqlalchemy import create_engine
 
+<<<<<<< HEAD
+=======
+"""
+This script is used to Extract, Transform and Load (ETL) data from the
+provided .csv file to the DB. The transformation involve data manipulation
+with Pandas and some NLP
+"""
+
+def load_data(messages_filepath, categories_filepath):
+>>>>>>> d5c0f8eba8f1ddf8f28aaaa3cf0472a3654c0b9b
 
 """
 This script is used to Extract, Transform and Load (ETL) data from the
