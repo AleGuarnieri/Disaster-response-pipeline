@@ -10,7 +10,9 @@ with Pandas and some NLP
 """
 
 def load_data(messages_filepath, categories_filepath):
-
+    """
+    This function extracts data from .csv into a pandas Dataframe
+    """
     messages = pd.read_csv(messages_filepath)
     categories = pd.read_csv(categories_filepath)
     df = messages.merge(categories, on = 'id')
@@ -19,7 +21,10 @@ def load_data(messages_filepath, categories_filepath):
 
 
 def clean_data(df):
-    
+    """
+    This function transforms extracted data in order to clean both features
+    and labels
+    """
     #creating "categories" columns
     categories = df['categories'].str.split(";", expand=True)
 
@@ -38,22 +43,28 @@ def clean_data(df):
     #concatenating feature columns and categories columns
     df = pd.concat([df, categories], axis=1)
 
-    #removing duplicates
+    #removing duplicates and rows with not binary values
     df.drop_duplicates(inplace=True)
     dfDupsMessage = df[df.duplicated(['message'],keep=False)]
     df.drop(dfDupsMessage.index, inplace=True)
     df.drop('original', axis=1, inplace = True)
+    df.drop(df[df.related == 2].index, inplace= True)
 
     return df
     
 def save_data(df, database_filename):
-    
+    """
+    This function loads cleaned data into a Database
+    """
     #connecting to DATABASE and saving data to table DisasterResponseTable
     engine = create_engine('sqlite:///' + str(database_filename))
     df.to_sql('DisasterResponseTable', engine, if_exists='replace', index=False)  
 
 
 def main():
+    """
+    Main function used to execute the other functions and manage errors
+    """
     if len(sys.argv) == 4:
 
         messages_filepath, categories_filepath, database_filepath = sys.argv[1:]
@@ -76,7 +87,7 @@ def main():
               'well as the filepath of the database to save the cleaned data '\
               'to as the third argument. \n\nExample: python process_data.py '\
               'disaster_messages.csv disaster_categories.csv '\
-              'DisasterResponse.db')
+              'DisasterResponseDB.db')
 
 
 if __name__ == '__main__':
