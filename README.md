@@ -18,7 +18,7 @@ This is an interactive flask app built as part of a Data Science course to put i
 Implementing it allowed me to understand and practice Data engineering skills, the basics of NLP and their application
 to the implementation of an ML model through pipelines. 
 
-##File Description
+## File Description
 Data directory: contains data from Figure8 and the script process_data.py containing the ETL pipeline to clean data. 
 Models directory: contains the script train_classifier.py containing ML pipeline based on NLP to train and evaluate ML model.
 App directory: contains the script run.py used to run the flask web-app which visualize the data and deploy the classifier so
